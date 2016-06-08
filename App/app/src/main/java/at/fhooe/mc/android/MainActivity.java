@@ -11,6 +11,6 @@ public class MainActivity extends Activity {
         super.onCreate(_savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Log.i("MainActivity","Test");
+
     }
 }
