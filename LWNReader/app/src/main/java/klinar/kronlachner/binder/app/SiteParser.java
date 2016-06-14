@@ -1,11 +1,18 @@
+package klinar.kronlachner.binder.app;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.parser.Parser;
+
 import java.net.*;
 import java.io.*;
+
 
 public class SiteParser{
 	private static final String LWN_URL = "http://lwn.net/";
 	
 	
-	private static String parseFullPage(String url) throws IOException{
+	public static String parseFullPage(String url) throws IOException{
 		String currentLine = "";
 		String content = "";
 		BufferedReader in = null;
@@ -24,6 +31,10 @@ public class SiteParser{
 		}
 
 		return content;
-		
+	}
+
+	public static String testJSoup(String html){
+		Document doc = Parser.parse(html, LWN_URL);
+		return doc.title();
 	}
 }
