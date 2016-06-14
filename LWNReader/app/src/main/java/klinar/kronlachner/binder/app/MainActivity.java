@@ -17,25 +17,36 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import klinar.kronlachner.binder.myapplication.R;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     public static final String TAG = "Nav Drawer Test";
+    public List<Article> myArcticles = new ArrayList<Article>();
+    private static MainActivity instance;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        instance = this;
+
+        //Setup Toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //Setup Navigation Drawer
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -44,9 +55,14 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-
+        createArticleList();
     }
+
+    public static MainActivity getInstance(){
+        return instance;
+    }
+
+
 
     @Override
     public void onBackPressed() {
@@ -73,23 +89,19 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.menu_bar_favorite) {
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         switch(item.getItemId()){
             case R.id.nav_search:{
-                Toast.makeText(this, "Search selected",Toast.LENGTH_SHORT).show();
-                ListFragment artice_list_fragment = new ListFragment();
-                FragmentManager manager = getSupportFragmentManager();
-                manager.beginTransaction().replace(R.id.layout_for_fragment, artice_list_fragment).commit();
+                Toast.makeText(this, item.getItemId(),Toast.LENGTH_SHORT).show();
             }break;
             case R.id.nav_favorites:{
                 Toast.makeText(this, "Favorites selected",Toast.LENGTH_SHORT).show();
@@ -105,5 +117,13 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+
+
+    private void createArticleList(){
+        MainActivity.getInstance().myArcticles.add(new Article("Distributors ponder a systemd change", "Distributions", "Jun 7, 2016" , "corbet"));
+        MainActivity.getInstance().myArcticles.add(new Article("Distributors ponder a systemd change", "Distributions", "Jun 7, 2016" , "corbet"));
+        MainActivity.getInstance().myArcticles.add(new Article("Distributors ponder a systemd change", "Distributions", "Jun 7, 2016" , "corbet"));
     }
 }

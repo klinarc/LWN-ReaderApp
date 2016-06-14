@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="klinar.kronlachner.binder.app.ListFragment">
+    tools:context="klinar.kronlachner.binder.app.ArticleFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -11,11 +11,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <AnalogClock
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/article_list_view"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/analogClock"
-            android:layout_gravity="center_horizontal" />
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Large Text"
+            android:id="@+id/empty" />
+
+
     </LinearLayout>
 
 </FrameLayout>
