@@ -19,21 +19,19 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
-
 import klinar.kronlachner.binder.myapplication.R;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     public static final String TAG = "Nav Drawer Test";
-    public List<Article> myArcticles = new ArrayList<Article>();
     private static MainActivity instance;
 
     @Override
@@ -55,14 +53,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        createArticleList();
+
+        ArticleFragment articleFragment = new ArticleFragment();
+        if(articleFragment != null){
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().add(R.id.layout_for_fragment, articleFragment,"").commit();
+        }
     }
 
     public static MainActivity getInstance(){
         return instance;
     }
-
-
 
     @Override
     public void onBackPressed() {
@@ -101,29 +102,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Handle navigation view item clicks here.
         switch(item.getItemId()){
             case R.id.nav_search:{
-                Toast.makeText(this, item.getItemId(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, item.getTitle(),Toast.LENGTH_SHORT).show();
             }break;
             case R.id.nav_favorites:{
-                Toast.makeText(this, "Favorites selected",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, item.getTitle(),Toast.LENGTH_SHORT).show();
             }break;
             case R.id.nav_kernel:{
-                Toast.makeText(this, "Kernel selected",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, item.getTitle(),Toast.LENGTH_SHORT).show();
             }break;
             case R.id.nav_security:{
-                Toast.makeText(this, "Security selected",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, item.getTitle(),Toast.LENGTH_SHORT).show();
             }break;
             default: Log.i(TAG, "unexpected nav_id click encountered in Navigation Drawer");
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
-
-
-
-    private void createArticleList(){
-        MainActivity.getInstance().myArcticles.add(new Article("Distributors ponder a systemd change", "Distributions", "Jun 7, 2016" , "corbet"));
-        MainActivity.getInstance().myArcticles.add(new Article("Distributors ponder a systemd change", "Distributions", "Jun 7, 2016" , "corbet"));
-        MainActivity.getInstance().myArcticles.add(new Article("Distributors ponder a systemd change", "Distributions", "Jun 7, 2016" , "corbet"));
     }
 }

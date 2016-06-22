@@ -1,22 +1,27 @@
 package klinar.kronlachner.binder.app;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import klinar.kronlachner.binder.myapplication.R;
 import klinar.kronlachner.binder.app.MainActivity;
 
 class Article_List_Adapter extends ArrayAdapter<Article>{
 
     public static final String TAG = "List_Adapter Test";
+    public List<Article> articles;
 
-    public Article_List_Adapter() {
-        super(MainActivity.getInstance().getApplicationContext(), R.layout.article_list_row, MainActivity.getInstance().myArcticles);
+    public Article_List_Adapter(Context _c, int textViewResourceId, List<Article> articles) {
+        super(_c, textViewResourceId, articles);
+        this.articles = articles;
     }
 
 
@@ -31,7 +36,7 @@ class Article_List_Adapter extends ArrayAdapter<Article>{
         }
 
         //Find the article to work with
-        Article currentArticle = MainActivity.getInstance().myArcticles.get(_position);
+        Article currentArticle = articles.get(_position);
 
         //fill the Article_View
         switch(currentArticle.getCategory()){
