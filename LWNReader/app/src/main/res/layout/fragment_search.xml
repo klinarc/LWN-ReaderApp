@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="klinar.kronlachner.binder.app.ArticleFragment">
+    tools:context="klinar.kronlachner.binder.app.SearchFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -11,12 +11,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ListView
+        <SearchView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/article_list_view"
-            android:layout_gravity="center_horizontal" />
+            android:id="@+id/inputSearch" />
 
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/search_list_view" />
 
     </LinearLayout>
 
