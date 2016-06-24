@@ -1,6 +1,7 @@
 package klinar.kronlachner.binder.app;
 
 import android.os.Bundle;
+import android.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.support.design.widget.NavigationView;
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public static final String TAG = "Nav Drawer Test";
     private static MainActivity instance;
     private List<Article> articles;
+    Menu menu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +73,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+        this.menu = menu;
+        menu.setGroupVisible(R.id.all_items, false);
+
         return true;
     }
 
@@ -136,6 +141,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         articles.add(new Article("Distributors ponder a system change", "Distributions", "Jun 7, 2016", "corbet"));
         articles.add(new Article("Security updates for Tuesday", "Security", " Jun 21, 2016", "ris"));
         articles.add(new Article("Kernel prepatch 4.7-rc4", "Kernel", "Jun 20, 2016", "jake"));
+        articles.add(new Article("Kernel prepatch 4.7-rc4", "Kernel", "Jun 20, 2016", "jake"));
+        articles.add(new Article("Kernel prepatch 4.7-rc4", "Kernel", "Jun 20, 2016", "jake"));
+        articles.add(new Article("Kernel prepatch 4.7-rc4", "Kernel", "Jun 20, 2016", "jake"));
+        articles.add(new Article("Kernel prepatch 4.7-rc4", "Kernel", "Jun 20, 2016", "jake"));
+        articles.add(new Article("Kernel prepatch 4.7-rc4", "Kernel", "Jun 20, 2016", "jake"));
+        articles.add(new Article("Kernel prepatch 4.7-rc4", "Kernel", "Jun 20, 2016", "jake"));
+        articles.add(new Article("Kernel prepatch 4.7-rc4", "Kernel", "Jun 20, 2016", "jake"));
+        articles.add(new Article("Kernel prepatch 4.7-rc4", "Kernel", "Jun 20, 2016", "jake"));
+        articles.add(new Article("Kernel prepatch 4.7-rc4", "Kernel", "Jun 20, 2016", "jake"));
+
+
     }
 
     public List<Article> getArticleList() {
