@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RadioGroup
+        android:id="@+id/radio_filter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/dialog_announcements"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="@string/dialog_announcements" />
+
+        <RadioButton
+            android:id="@+id/dialog_commerce"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="@string/dialog_commerce" />
+
+        <RadioButton
+            android:id="@+id/dialog_development"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="@string/dialog_development" />
+
+        <RadioButton
+            android:id="@+id/dialog_distributions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="@string/dialog_distributions" />
+
+        <RadioButton
+            android:id="@+id/dialog_front"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="@string/dialog_front" />
+
+        <RadioButton
+            android:id="@+id/dialog_kernel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="@string/dialog_kernel" />
+
+        <RadioButton
+            android:id="@+id/dialog_legal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="@string/dialog_legal" />
+
+        <RadioButton
+            android:id="@+id/dialog_letters"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="@string/dialog_letters" />
+
+        <RadioButton
+            android:id="@+id/dialog_press"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="@string/dialog_press" />
+
+        <RadioButton
+            android:id="@+id/dialog_security"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="@string/dialog_security" />
+    </RadioGroup>
+</LinearLayout>

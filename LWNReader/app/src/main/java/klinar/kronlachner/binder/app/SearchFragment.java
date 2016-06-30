@@ -1,24 +1,20 @@
 package klinar.kronlachner.binder.app;
 
-
+import android.app.DialogFragment;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
 import java.util.List;
-
 import klinar.kronlachner.binder.myapplication.R;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
 public class SearchFragment extends Fragment {
     private ListView articleListView;
     private List<Article> articles;
@@ -28,6 +24,13 @@ public class SearchFragment extends Fragment {
     public SearchFragment() {
         // Required empty public constructor
     }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -60,4 +63,28 @@ public class SearchFragment extends Fragment {
         });
         return view;
     }
+
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        menu.findItem(R.id.menu_bar_favorite).setVisible(false);
+        menu.findItem(R.id.menu_bar_filter).setVisible(true);
+        super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_bar_filter: {
+                showDialog();
+            }
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    void showDialog() {
+        DialogFragment newFragment = SelectFilterClass.newInstance();
+        newFragment.show(getActivity().getFragmentManager(), "dialog");
+    }
+
+
 }
